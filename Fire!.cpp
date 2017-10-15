@@ -45,23 +45,29 @@ int main(){
   for(int i=0;i<t;i++){
       int r,c;
       cin>>r>>c;
-      Point start,fstart;
+      Point start;
+      queue <Node> qf;
+      int visit[N][N];
+      int visitf[N][N];
+      for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++)
+            visit[i][j]=visitf[i][j]=INF;
+    }
       for(int i=0;i<r;i++){
         for(int j=0;j<c;j++){
           cin>>maze[i][j];
-          if(maze[i][j]=='J') start=Point(i,j);
-          if(maze[i][j]=='F') fstart=Point(i,j);
+          if(maze[i][j]=='J'){
+            start=Point(i,j);
+            visit[i][j]=0;
+          }
+          if(maze[i][j]=='F') {
+            visitf[i][j]=0;
+            qf.push(Node(Point(i,j),0));
+          }
         }
       }
-      queue <Node> q,qf;
+      queue <Node> q;
       q.push(Node(start,0));
-      qf.push(Node(fstart,0));
-      int visit[N][N];
-      int visitf[N][N];
-      for(int i=0;i<N;i++){
-        for(int j=0;j<N;j++)
-            visit[i][j]=visitf[i][j]=INF;
-    }
       while(!q.empty()){
           Node curr=q.front();
           Point pt=curr.pt;
