@@ -25,7 +25,7 @@ bool isNotWall(char ch) {
 	return true;
 }
 
-int BFS_E(char vec[N][N], Point src, Point dest,int R,int C){
+int BFS(char vec[N][N], Point src, Point dest,int R,int C){
 	queue <node> q;
 	node s = { src, 0 };
 	q.push(s);
@@ -79,7 +79,7 @@ int main() {
 				}
 			}
 		}
-		int dist = BFS_E(vec, src, dest,R,C);
+		int dist = BFS(vec, src, dest,R,C);
 		if (dist == -1) cout << "NO" << endl;
 		else cout << dist << endl;
 	}
