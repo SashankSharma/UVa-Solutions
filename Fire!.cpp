@@ -85,7 +85,7 @@ int main(){
             int col=pt.y+colNum[i];
             if(isValid(row,col,r,c) && maze[row][col]!='#' && visitf[row][col]>curr.k+1){
               visitf[row][col]=curr.k+1;
-              q.push(Node(Point(row,col),curr.k+1));
+              qf.push(Node(Point(row,col),curr.k+1));
             }
           }
       }
